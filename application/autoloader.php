@@ -27,7 +27,7 @@ $autoloadLocal = __DIR__ . '/../../dvc/autoloader-local.php';
 //~ print realpath( __DIR__) . '<br />';
 //~ print realpath( __DIR__ . '/../') . '<br />';
 //~ print realpath( __DIR__ . '/../../') . '<br />';
-//~ print realpath( __DIR__ . '/../../autoloader-local.php') . '<br />';
+//~ print realpath( __DIR__ . '/../../dvc/autoloader-local.php') . '<br />';
 //~ die;
 
 if ( file_exists( $autoload))
