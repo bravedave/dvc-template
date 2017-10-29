@@ -1,6 +1,17 @@
 {
+	"name": "bravedave/dvc-auth",
+	"description": "A template for using the DVC Framework",
+	"version": "0.0.1",
 	"minimum-stability": "dev",
 	"prefer-stable": true,
+	"homepage": "http://brayworth.com",
+	"type": "library",
+	"license": "MIT",
+	"authors": [{
+		"name": "Brave Dave",
+		"email": "davbray@gmail.com",
+		"homepage": "http://brayworth.com"
+	}],
 	"repositories": [
 		{
 		    "type": "git",
@@ -8,6 +19,8 @@
 		}
 	],
 	"require": {
-		"bravedave/dvc": "dev-master"
+		"php": ">=7.0",
+		"bravedave/dvc": "dev-master",
+		"ext-sqlite3": "*"
 	}
 }
