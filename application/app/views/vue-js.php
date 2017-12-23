@@ -8,68 +8,74 @@
 		http://creativecommons.org/licenses/by/4.0/
 
 	*/	?>
-<div id="app-4">
-	<ol>
-		<li v-for="todo in todos">
-			{{ todo.text }}
-		</li>
+<main class="container" v-cloak>
+  <div class="row">
+    <div class="col">
+      <h1>{{title}}</h1>
+    </div>
 
-	</ol>
+  </div>
 
-</div>
+  <div class="row">
+    <div class="col">
+      <card-primary v-bind="left"></card-primary>
+    </div>
+    <div class="col">
+      <card-primary v-bind="center"></card-primary>
+    </div>
+    <div class="col">
+      <card-primary v-bind="right"></card-primary>
+    </div>
+  </div>
+</main>
 <script>
-var app4 = new Vue({
-	el: '#app-4',
-	data: {
-		todos: [
-			{ text: 'Learn JavaScript' },
-			{ text: 'Learn Vue' },
-			{ text: 'Build something awesome' }
-		]
-	}
+$(document).ready( function() {
+  _brayworth_.Vue.block({block:'card-primary'}).then( function( d) {
+
+    // console.log( d);
+
+    var cardPrimary = {
+      props: ['title','body','footer'],
+      template: d,
+      filters : {
+        capitalize: function (value) {
+          if (!value) return ''
+          return value.toCapitalCase();
+
+        }
+
+      }
+
+    }
+
+    Vue.component('card-primary', cardPrimary);
+
+    _brayworth_.Vue({
+      el : '.container',
+      data : {
+        title : 'hello world',
+        left : {
+          title : 'left',
+          body :'i like to be left'
+        },
+        center : {
+          title : 'center',
+          body :'I like to be center'
+        },
+        right : {
+          title : 'right',
+          body :'i like to be right'
+        },
+
+      // },
+      // components : {
+      //   'card-primary' : cardPrimary
+
+      }
+
+    })
+
+  })
 
 })
-</script>
-<ul id="repeat-object" class="demo">
-	<li v-for="value in object">
-		{{ value }}
-	</li>
-</ul>
-<script>
-new Vue({
-	el: '#repeat-object',
-	data: {
-		object: {
-			firstName: 'John',
-			lastName: 'Doe',
-			age: 30
-		}
-	}
-})
-</script>
-
-<div id="example-2">
-	<!-- `greet` is the name of a method defined below -->
-	<button v-on:click="greet">Greet</button>
-</div>
-<script>
-var example2 = new Vue({
-	el: '#example-2',
-	data: {
-		name: 'Vue.js'
-	},
-	// define methods under the `methods` object
-	methods: {
-		greet: function (event) {
-			// `this` inside methods points to the Vue instance
-			alert('Hello ' + this.name + '!')
-			// `event` is the native DOM event
-			if (event) {
-				alert(event.target.tagName)
-			}
-		}
-	}
-})
-// you can invoke methods in JavaScript too
-example2.greet() // -> 'Hello Vue.js!'
 </script>
