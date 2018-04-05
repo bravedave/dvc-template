@@ -12,4 +12,6 @@ NameSpace dvc;
 
 abstract class config extends _config {
 	static $WEBNAME = 'A PSR style PHP Framework';
+	static $PAGE_TEMPLATE = '\dvc\pages\bootstrap4';
+
 }
