@@ -1,3 +1,4 @@
+application/app/public/js/brayworthlib.js
 application/data/db.json
 vendor/*
 composer.lock
