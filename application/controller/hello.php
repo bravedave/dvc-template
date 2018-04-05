@@ -10,16 +10,11 @@
 
 class hello extends Controller {
 	function index() {
-		$p = new dvc\pages\bootstrap('hello world');
-			$p
-				->header()
-				->title();
-
-			$p->primary();
-				$this->load('hello');
-
-			$p->secondary();
-				print 'secondary';
+		$this->render([
+			'title' => 'hello world',
+			'primary' => 'hello',
+			'secondary' =>'blank'
+		]);
 
 	}
 
