@@ -21,7 +21,7 @@ To use DVC on a Windows 10 computer (Devel Environment)
           * extension=sqlite3
           * extension=mbstring
           * extension=openssl
-          *note these instructions for PHP Version 7.2.7, the older syntax included .dll on windows*
+      * *note these instructions for PHP Version 7.2.7, the older syntax included .dll on windows*
 
    * Install Git : https://git-scm.com/
      * Install the *Git Bash Here* option
