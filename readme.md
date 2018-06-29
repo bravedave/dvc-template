@@ -17,8 +17,12 @@ To use DVC on a Windows 10 computer (Devel Environment)
       * by default there is no php.ini (required)
         * copy php.ini-production to php.ini
         * edit and modify/add (uncomment)
-          * extension=php_fileinfo.dll
-          * extension=php_sqlite3.dll
+          * extension=fileinfo
+          * extension=sqlite3
+          * extension=mbstring
+          * extension=openssl
+          *note these instructions for PHP Version 7.2.7, the older syntax included .dll on windows*
+
    * Install Git : https://git-scm.com/
      * Install the *Git Bash Here* option
    * Install Composer : https://getcomposer.org/

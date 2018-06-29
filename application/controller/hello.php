@@ -9,6 +9,22 @@
 	*/
 
 class hello extends Controller {
+	function info() {
+		/* default setting
+		 * in case you forget to disable this on a production server
+		 * - only running on localhost
+		 */
+		if ( Request::ServerIsLocal()) {
+			$this->render([
+				'title' => 'hello world',
+				'primary' => 'info',
+				'secondary' =>'blank'
+			]);
+
+		}
+
+	}
+
 	function index() {
 		$this->render([
 			'title' => 'hello world',
