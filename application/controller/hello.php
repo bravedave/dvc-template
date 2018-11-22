@@ -9,6 +9,30 @@
 	*/
 
 class hello extends Controller {
+	protected function posthandler() {
+		$action = $this->getPost('action');
+
+		if ( 'gibblegok' == $action) { \Json::ack( $action); }
+		else { \Json::nak( $action); }
+
+	}
+
+	protected function _index() {
+		$this->render([
+			'title' => 'hello world',
+			'primary' => 'hello',
+			'secondary' =>'blank'
+		]);
+
+	}
+
+	function index() {
+		$this->isPost() ?
+			$this->postHandler() :
+			$this->_index();
+
+	}
+
 	function info() {
 		/* default setting
 		 * in case you forget to disable this on a production server
@@ -22,15 +46,6 @@ class hello extends Controller {
 			]);
 
 		}
-
-	}
-
-	function index() {
-		$this->render([
-			'title' => 'hello world',
-			'primary' => 'hello',
-			'secondary' =>'blank'
-		]);
 
 	}
 
