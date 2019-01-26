@@ -3,7 +3,7 @@
 This is a template for using the DVC Framework
 
 Installing this demo exposes the documentation for using the dvc framework. The documentation
-is written using markdown and is part of the dvc framework.
+is written using markdown and is part of the dvc framework. The documentation is also part brayworth's web site here : https://brayworth.com/docs/
 
 ## Features
 1. Quick to setup - easy PHP development environment
