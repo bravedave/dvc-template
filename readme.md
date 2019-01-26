@@ -31,16 +31,10 @@ To use DVC on a Windows 10 computer (Devel Environment)
    * Start the *Git Bash* Shell
      * Composer seems to work best here, depending on how you installed Git
    * MD C:\Data\ && CD C:\Data
-   * clone:
-      * git clone https://github.com/bravedave/dvc-template
-   * or download as zip and extract
-      * https://github.com/bravedave/dvc-template/archive/master.zip
-   * or setup as new project
-     * `composer create-project --repository='{"type":"vcs","url":"https://github.com/bravedave/dvc-template"}' bravedave/dvc-template my-project @dev`
-
-1. optionally change the name and change to the folder
-   * cd dvc-template
-1. run *composer install*
+   * setup a new project
+     * `composer create-project bravedave/dvc-template my-project @dev`
+   * the project is now set up in C:\Data\my-project
+     * cd my-project
 
 To run the demo
    * Review the run.cmd
