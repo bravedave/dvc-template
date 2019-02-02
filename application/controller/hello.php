@@ -21,7 +21,16 @@ class hello extends Controller {
 		$this->render([
 			'title' => 'hello world',
 			'primary' => 'hello',
-			'secondary' =>'blank'
+			'secondary' =>'index'
+		]);
+
+	}
+
+	function tictactoe() {
+		$this->render([
+			'title' => 'tic tac toe',
+			'primary' => 'tictactoe',
+			'secondary' =>'index'
 		]);
 
 	}
