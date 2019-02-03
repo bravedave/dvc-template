@@ -12,14 +12,18 @@
 .pointer { cursor: pointer; }
 .forbidden { cursor: not-allowed; }
 </style>
-<h1 class="d-none d-print-block">TIC TAC TOE</h1>
 
-<div class="jumbotron" style="font-size: 3rem" id="tictactoe"></div>
+<div class="card" id="tictactoe">
+	<div class="card-body" style="font-size: 3rem; padding: 0 15px;" game></div>
+	<div class="card-footer" result>&nbsp;</div>
+
+</div>
 
 <script>
 (function( $) {
 	let props = {
 		move : 'X',
+		moves : 0,
 		winner : ''
 
 	}
@@ -28,6 +32,7 @@
 		if ( props.winner == '') {
 			if ( /(X|O)/.test( $( this).html())) return;
 
+			props.moves ++;
 			$( this).html( props.move).removeClass('pointer').addClass('forbidden').trigger( 'change');
 			props.move = props.move == 'X' ? 'O' : 'X';
 
@@ -35,33 +40,24 @@
 
 	}
 
-	let board = ( host) => {
-		let row = ( host) => {
-			return $('<div class="row" />').appendTo( host);
-
-		};
-
-		let square = ( host) => {
-			let el = $('<div class="col border text-center pointer">&nbsp;</div>')
-
-			el
+	let square = ( host) => {
+		return $('<div class="col border text-center pointer">&nbsp;</div>')
 			.on( 'click', turn)
 			.on( 'change', () => { host.trigger( 'winner')})
 			.appendTo( host);
 
-			return el;
+	};
 
-		};
-
+	(function( host) {
 		let squares = [];
 
 		host
 		.on('render', function( e) {
 			$(this).html('');
 
-			(function( r) { squares.push( square( r), square( r), square( r))})(row( this));
-			(function( r) { squares.push( square( r), square( r), square( r))})(row( this));
-			(function( r) { squares.push( square( r), square( r), square( r))})(row( this));
+			(function( r) { squares.push( square( r), square( r), square( r))})( $('<div class="row" />').appendTo( host));
+			(function( r) { squares.push( square( r), square( r), square( r))})( $('<div class="row" />').appendTo( host));
+			(function( r) { squares.push( square( r), square( r), square( r))})( $('<div class="row" />').appendTo( host));
 
 		})
 		.on('winner', function( e) {
@@ -91,18 +87,14 @@
 
 			});
 
-			if ( /(O|X)/.test( props.winner)) {
-				$('<div class="col" />').html('Winner : ' + props.winner).appendTo( row( host));
-
-			}
+			if ( /(O|X)/.test( props.winner)) $('#tictactoe > [result]').html('Winner : ' + props.winner);
+			else if ( props.moves == 9 ) $('#tictactoe > [result]').html('draw');
 
 		})
 
 		host.trigger( 'render');
 
-	};
-
-	board( $('#tictactoe'));
+	})( $('#tictactoe > [game]'));
 
 })( jQuery);
 </script>

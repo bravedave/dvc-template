@@ -26,19 +26,18 @@ class hello extends Controller {
 
 	}
 
-	function tictactoe() {
-		$this->render([
-			'title' => 'tic tac toe',
-			'primary' => 'tictactoe',
-			'secondary' =>'index'
-		]);
-
-	}
-
 	function index() {
 		$this->isPost() ?
 			$this->postHandler() :
 			$this->_index();
+
+	}
+
+	function tictactoe() {
+		$this->modal([
+			'title' => 'tic tac toe',
+			'load' => 'tictactoe',
+		]);
 
 	}
 
