@@ -138,7 +138,7 @@
 
 				});
 
-				$('#tictactoe > [result]').html('').append( ul);
+				$('#tictactoe > [result]').html('').append( bg);
 
 			}
 
