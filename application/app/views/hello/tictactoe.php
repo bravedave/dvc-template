@@ -24,7 +24,8 @@
 	let props = {
 		move : 'X',
 		moves : 0,
-		winner : ''
+		winner : '',
+		history : []
 
 	}
 
@@ -62,22 +63,20 @@
 		})
 		.on('winner', function( e) {
 			let win = [
-				[1,2,3],
-				[1,5,9],
+				[0,1,2],
+				[0,4,8],
+				[0,3,6],
 				[1,4,7],
+				[2,4,6],
 				[2,5,8],
-				[3,5,7],
-				[3,6,9],
-				[4,5,6],
-				[7,5,3],
-				[7,8,9]
-
+				[3,4,5],
+				[6,7,8]
 			];
 
 			$.each( win, function( i, arr) {
-				let a = squares[ arr[0]-1].html();
-				let b = squares[ arr[1]-1].html();
-				let c = squares[ arr[2]-1].html();
+				let a = squares[ arr[0]].html();
+				let b = squares[ arr[1]].html();
+				let c = squares[ arr[2]].html();
 
 				if ( a == b && a == c && /(O|X)/.test( a)) {
 					props.winner = a;
@@ -87,8 +86,61 @@
 
 			});
 
-			if ( /(O|X)/.test( props.winner)) $('#tictactoe > [result]').html('Winner : ' + props.winner);
-			else if ( props.moves == 9 ) $('#tictactoe > [result]').html('draw');
+			let h = []
+			$.each( squares, function( i, sq) {
+				h.push( sq.html());
+
+			});
+
+			props.history.push( h);
+
+			if ( /(O|X)/.test( props.winner)) {
+				$('#tictactoe > [result]').html('Winner : ' + props.winner);
+
+			}
+			else if ( props.moves == 9 ) {
+				$('#tictactoe > [result]').html('draw');
+
+			}
+			else {
+				let bg = $('<div class="btn-group btn-group-sm" />');
+				$.each( props.history, function( index, state) {
+					$('<a href="#" class="btn btn-outline-primary" />').appendTo( bg).html( index).on( 'click', function( e) {
+						e.stopPropagation(); e.preventDefault();
+
+						props.moves = 0;
+						let moves = { x : 0, o : 0 };
+						$.each( state, function( i, el) {
+							squares[i].html( el);
+							if ( /(O|X)/.test( el)) {
+								'O' == el ? moves.o++ : moves.x++;
+								squares[i].removeClass('pointer').addClass('forbidden');
+								props.moves ++;
+
+							}
+							else {
+								squares[i].removeClass('forbidden').addClass('pointer');
+								props.move = props.move == 'X' ? 'O' : 'X';
+
+							}
+
+						});
+
+						props.move = moves.x > moves.o ? 'O' : 'X';
+						if ( props.history.length > index) {
+							props.history.splice( index, props.history.length - index +1);
+
+						}
+
+						host.trigger( 'winner');
+
+					});
+
+				});
+
+				$('#tictactoe > [result]').html('').append( ul);
+
+			}
 
 		})
 
