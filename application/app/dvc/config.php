@@ -11,7 +11,7 @@
 
 namespace dvc;
 
-abstract class config extends _config {
+abstract class config extends core\config {
 	static $DB_TYPE = 'sqlite';	// needs to be mysql or sqlite to run, disable with 'disabled'
 
 	static $WEBNAME = 'A PSR style PHP Framework';
