@@ -9,7 +9,7 @@
 
 	*/	?>
 <h1>hello world</h1>
-<?php if ( Request::ServerIsLocal()) { ?>
+<?php if ( $this->Request->ServerIsLocal()) { ?>
 <ul>
   <li><a href="<?php url::write('hello/info') ?>">View phpinfo()</a>
 

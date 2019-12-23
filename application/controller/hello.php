@@ -46,7 +46,7 @@ class hello extends Controller {
 		 * in case you forget to disable this on a production server
 		 * - only running on localhost
 		 */
-		if ( Request::ServerIsLocal()) {
+		if ( $this->Request->ServerIsLocal()) {
 			$this->render([
 				'title' => 'hello world',
 				'primary' => 'info',
